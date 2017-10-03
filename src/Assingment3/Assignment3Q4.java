@@ -66,7 +66,7 @@ public class Assignment3Q4 {
         // side is used to define how many sides of each block the robot has gone around
         int go = 0;
         // go is used to define how many spaces on the side of the block the robot has moved
-        
+        while(true){
        
         while(blocks < 4){
             // this tells the robot to go around the sides of a block while it has gone around less than 4 blocks
@@ -93,6 +93,8 @@ public class Assignment3Q4 {
             side = 0;
             // resets side so that the robot will know how many sides to go around again
             
-        }
+        } blocks = 0;
+    }
+       
     }
 }
