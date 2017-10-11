@@ -22,9 +22,9 @@ public class Assignment4Q2 {
         Scanner inches = new Scanner(System.in);
 
         double inch = inches.nextDouble();
-        
-        double cm =  (inch * 2.54);
-        
+
+        double cm = (inch * 2.54);
+
         System.out.println("that is " + cm + " centimeters");
     }
 }
