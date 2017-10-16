@@ -37,6 +37,9 @@ public class Assignment4Q9 extends javax.swing.JDialog {
         mul = new javax.swing.JButton();
         div = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        Squ = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -86,55 +89,80 @@ public class Assignment4Q9 extends javax.swing.JDialog {
 
         jLabel1.setText("Result");
 
+        Squ.setText("Square");
+        Squ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SquActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("For squares, only enter into the first number section");
+
+        jLabel3.setFont(new java.awt.Font("Trajan Pro", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 204));
+        jLabel3.setText("~Simple Calculator~");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(secondN)
+                                .addComponent(firstN)
+                                .addComponent(jLabel1))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(FirstNum, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                .addComponent(SecondNum)
+                                .addComponent(Result))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(firstN)
-                            .addComponent(secondN)
-                            .addComponent(jLabel1))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Result, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                            .addComponent(SecondNum)
-                            .addComponent(FirstNum, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
                         .addComponent(add)
                         .addGap(18, 18, 18)
                         .addComponent(sub)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(mul)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(div)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(div, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Squ)))
+                .addContainerGap(57, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(109, 109, 109))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FirstNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(firstN))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SecondNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(secondN))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(secondN)
+                    .addComponent(SecondNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add)
                     .addComponent(sub)
                     .addComponent(mul)
-                    .addComponent(div))
+                    .addComponent(div)
+                    .addComponent(Squ))
                 .addGap(52, 52, 52))
         );
 
@@ -155,9 +183,9 @@ public class Assignment4Q9 extends javax.swing.JDialog {
         // TODO add your handling code here:
          String first = FirstNum.getText();
          String sec = SecondNum.getText();
-        int firsts = Integer.parseInt(first);
-         int secs = Integer.parseInt(sec);
-        int adds = firsts + secs;
+        double firsts = Double.parseDouble(first);
+         double secs = Double.parseDouble(sec);
+        double adds = firsts + secs;
         Result.setText("" + adds);
     }//GEN-LAST:event_addActionPerformed
 
@@ -166,9 +194,9 @@ public class Assignment4Q9 extends javax.swing.JDialog {
         // TODO add your handling code here:
          String first = FirstNum.getText();
          String sec = SecondNum.getText();
-        int firsts = Integer.parseInt(first);
-         int secs = Integer.parseInt(sec);
-        int subs = firsts - secs;
+        double firsts = Double.parseDouble(first);
+         double secs = Double.parseDouble(sec);
+        double subs = firsts - secs;
         Result.setText("" + subs);
     }//GEN-LAST:event_subActionPerformed
 
@@ -177,9 +205,9 @@ public class Assignment4Q9 extends javax.swing.JDialog {
         // TODO add your handling code here:
          String first = FirstNum.getText();
          String sec = SecondNum.getText();
-        int firsts = Integer.parseInt(first);
-         int secs = Integer.parseInt(sec);
-         int muls = firsts * secs;
+        double firsts = Double.parseDouble(first);
+         double secs = Double.parseDouble(sec);
+         double muls = firsts * secs;
         Result.setText("" + muls);
     }//GEN-LAST:event_mulActionPerformed
 
@@ -188,11 +216,19 @@ public class Assignment4Q9 extends javax.swing.JDialog {
         // TODO add your handling code here:
          String first = FirstNum.getText();
          String sec = SecondNum.getText();
-        int firsts = Integer.parseInt(first);
-         int secs = Integer.parseInt(sec);
-         int divs = firsts / secs;
+        double firsts = Double.parseDouble(first);
+         double secs = Double.parseDouble(sec);
+         double divs = firsts / secs;
         Result.setText("" + divs);
     }//GEN-LAST:event_divActionPerformed
+
+    private void SquActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SquActionPerformed
+        // TODO add your handling code here:
+         String first = FirstNum.getText();
+        double firsts = Double.parseDouble(first);
+         double squa = firsts * firsts;
+        Result.setText("" + squa);
+    }//GEN-LAST:event_SquActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,10 +275,13 @@ public class Assignment4Q9 extends javax.swing.JDialog {
     private javax.swing.JTextField FirstNum;
     private javax.swing.JTextField Result;
     private javax.swing.JTextField SecondNum;
+    private javax.swing.JButton Squ;
     private javax.swing.JButton add;
     private javax.swing.JButton div;
     private javax.swing.JLabel firstN;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton mul;
     private javax.swing.JLabel secondN;
     private javax.swing.JButton sub;
