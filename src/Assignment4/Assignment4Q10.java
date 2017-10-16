@@ -33,6 +33,7 @@ public class Assignment4Q10 extends javax.swing.JDialog {
         Cel = new javax.swing.JTextField();
         FahCel = new javax.swing.JButton();
         CelFah = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,29 +61,39 @@ public class Assignment4Q10 extends javax.swing.JDialog {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Trajan Pro", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel3.setText("~Temperature Converter~");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Fah, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                    .addComponent(Fah)
                     .addComponent(Cel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(FahCel)
                     .addComponent(CelFah))
-                .addGap(19, 19, 19))
+                .addGap(24, 24, 24))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(jLabel3)
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Fah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -92,7 +103,7 @@ public class Assignment4Q10 extends javax.swing.JDialog {
                     .addComponent(jLabel2)
                     .addComponent(Cel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CelFah))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -109,11 +120,13 @@ public class Assignment4Q10 extends javax.swing.JDialog {
         int fahs = Integer.parseInt(fah);
          
          
-         double fahCels = fahs * 0.55 - 32;
+         double fahCels = (fahs - 32) * 0.55;
          
          Cel.setText("" + fahCels);
          
          Fah.setText("");
+         
+         // converts the double to celcius and prints it 
     }//GEN-LAST:event_FahCelActionPerformed
 
     private void CelFahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CelFahActionPerformed
@@ -123,12 +136,12 @@ public class Assignment4Q10 extends javax.swing.JDialog {
        
         int cels = Integer.parseInt(cel);
          
-         double celFahs = cels * 1.8 + 32;
+         double celFahs = (cels * 1.8) + 32;
          
          Fah.setText("" + celFahs);
          
          Cel.setText("");
-         
+          // converts the double to fahrenheit  and prints it 
     }//GEN-LAST:event_CelFahActionPerformed
 
     /**
@@ -179,5 +192,6 @@ public class Assignment4Q10 extends javax.swing.JDialog {
     private javax.swing.JButton FahCel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
