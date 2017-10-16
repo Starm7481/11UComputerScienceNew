@@ -36,6 +36,8 @@ public class Assignment4Q10 extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 153, 51));
+        setForeground(new java.awt.Color(255, 153, 51));
 
         jLabel1.setText("Degrees Fahrenheit");
 
@@ -86,7 +88,7 @@ public class Assignment4Q10 extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(136, 136, 136)
                 .addComponent(jLabel3)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addGap(0, 145, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +119,7 @@ public class Assignment4Q10 extends javax.swing.JDialog {
         // TODO add your handling code here:
         String fah = Fah.getText();
         
-        int fahs = Integer.parseInt(fah);
+        double fahs = Double.parseDouble(fah);
          
          
          double fahCels = (fahs - 32) * 0.55;
@@ -126,7 +128,7 @@ public class Assignment4Q10 extends javax.swing.JDialog {
          
          Fah.setText("");
          
-         // converts the double to celcius and prints it 
+         // converts a string to a double and then converts to celcius and prints it 
     }//GEN-LAST:event_FahCelActionPerformed
 
     private void CelFahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CelFahActionPerformed
@@ -134,14 +136,14 @@ public class Assignment4Q10 extends javax.swing.JDialog {
         
         String cel = Cel.getText();
        
-        int cels = Integer.parseInt(cel);
+        double cels = Double.parseDouble(cel);
          
          double celFahs = (cels * 1.8) + 32;
          
          Fah.setText("" + celFahs);
          
          Cel.setText("");
-          // converts the double to fahrenheit  and prints it 
+          // converts a string to a double then converts to fahrenheit  and prints it 
     }//GEN-LAST:event_CelFahActionPerformed
 
     /**

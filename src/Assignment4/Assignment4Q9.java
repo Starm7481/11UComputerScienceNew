@@ -42,6 +42,8 @@ public class Assignment4Q9 extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 102, 0));
+        setForeground(new java.awt.Color(255, 102, 0));
 
         FirstNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,6 +54,12 @@ public class Assignment4Q9 extends javax.swing.JDialog {
         SecondNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SecondNumActionPerformed(evt);
+            }
+        });
+
+        Result.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResultActionPerformed(evt);
             }
         });
 
@@ -109,18 +117,6 @@ public class Assignment4Q9 extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(secondN)
-                                .addComponent(firstN)
-                                .addComponent(jLabel1))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(FirstNum, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                .addComponent(SecondNum)
-                                .addComponent(Result))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(add)
                         .addGap(18, 18, 18)
@@ -130,7 +126,20 @@ public class Assignment4Q9 extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(div, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Squ)))
+                        .addComponent(Squ))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(secondN)
+                                    .addComponent(firstN)
+                                    .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(FirstNum, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                    .addComponent(SecondNum)
+                                    .addComponent(Result))))))
                 .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -187,6 +196,9 @@ public class Assignment4Q9 extends javax.swing.JDialog {
          double secs = Double.parseDouble(sec);
         double adds = firsts + secs;
         Result.setText("" + adds);
+        
+        // gets numbers from the text box and makes doubles for them, then does the math for that button 
+        
     }//GEN-LAST:event_addActionPerformed
 
     private void subActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subActionPerformed
@@ -198,6 +210,7 @@ public class Assignment4Q9 extends javax.swing.JDialog {
          double secs = Double.parseDouble(sec);
         double subs = firsts - secs;
         Result.setText("" + subs);
+        // gets numbers from the text box and makes doubles for them, then does the math for that button 
     }//GEN-LAST:event_subActionPerformed
 
     private void mulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mulActionPerformed
@@ -209,6 +222,7 @@ public class Assignment4Q9 extends javax.swing.JDialog {
          double secs = Double.parseDouble(sec);
          double muls = firsts * secs;
         Result.setText("" + muls);
+        // gets numbers from the text box and makes doubles for them, then does the math for that button 
     }//GEN-LAST:event_mulActionPerformed
 
     private void divActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divActionPerformed
@@ -220,6 +234,7 @@ public class Assignment4Q9 extends javax.swing.JDialog {
          double secs = Double.parseDouble(sec);
          double divs = firsts / secs;
         Result.setText("" + divs);
+        // gets numbers from the text box and makes doubles for them, then does the math for that button 
     }//GEN-LAST:event_divActionPerformed
 
     private void SquActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SquActionPerformed
@@ -228,7 +243,12 @@ public class Assignment4Q9 extends javax.swing.JDialog {
         double firsts = Double.parseDouble(first);
          double squa = firsts * firsts;
         Result.setText("" + squa);
+        // gets numbers from the text box and makes doubles for them, then does the math for that button 
     }//GEN-LAST:event_SquActionPerformed
+
+    private void ResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ResultActionPerformed
 
     /**
      * @param args the command line arguments
