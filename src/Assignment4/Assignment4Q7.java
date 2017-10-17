@@ -50,6 +50,13 @@ public class Assignment4Q7 {
             if (pos == 67) {
                 pos = 86;
             }
+            if (pos > 100){
+                pos = pos - rolls;
+            }
+            if (rolls == 0){
+                System.out.println("Quitting already? >_<");
+                break;
+            }
             System.out.println("Your position is " + pos);
             // creates a while loop that checks for snakes and ladders against your roll 
             // then it prints out your position 
