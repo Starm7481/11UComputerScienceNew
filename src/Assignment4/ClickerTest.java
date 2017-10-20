@@ -14,6 +14,11 @@ public class ClickerTest extends javax.swing.JDialog {
 
     int clicks = 0;
     
+    int wins = 0;
+    
+    int lose = 0;
+    
+  
     
     
     /**
@@ -36,7 +41,10 @@ public class ClickerTest extends javax.swing.JDialog {
         Click = new javax.swing.JButton();
         Prog = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
-        suck = new javax.swing.JLabel();
+        Win = new javax.swing.JLabel();
+        Loss = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -55,7 +63,13 @@ public class ClickerTest extends javax.swing.JDialog {
         Prog.setMaximum(10);
         Prog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
-        suck.setText(" ");
+        Win.setText(" ");
+
+        Loss.setText(" ");
+
+        jLabel2.setText("Wins");
+
+        jLabel3.setText("Losses");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,22 +85,35 @@ public class ClickerTest extends javax.swing.JDialog {
                         .addComponent(Click))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(Prog, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(suck, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                        .addComponent(Prog, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(115, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Loss, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Win, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addComponent(Click)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Win)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(suck)
-                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Loss)
+                    .addComponent(jLabel3))
+                .addGap(23, 23, 23)
                 .addComponent(Prog, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67))
         );
@@ -101,19 +128,35 @@ public class ClickerTest extends javax.swing.JDialog {
         
         Prog.setStringPainted(true);
         
-        suck.setText("");
         
-        int random = (int)Math.floor(Math.random() * 10);
+        int random = ((int)Math.floor(Math.random() * 11 ))+ 2;
+        
         
         if(clicks < random){
             Prog.setValue(clicks);
             clicks = clicks +1;
+            
+                if (clicks == 10){
+            wins = wins +1; 
+            Win.setText(""+ wins);}
+        
         }
         else{
             Prog.setValue(0);
-            suck.setText("Oops, you must be unlucky, please try again.");
+            
+             if (clicks == 10){
+            wins = wins +1; 
+            Win.setText(""+ wins);}
+                    else{
+            lose = lose+1;
+            Loss.setText(""+ lose);
             clicks = 0;
         }
+                 
+        }
+        
+      
+
         
      
         
@@ -165,8 +208,11 @@ public class ClickerTest extends javax.swing.JDialog {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Click;
+    private javax.swing.JLabel Loss;
     private javax.swing.JProgressBar Prog;
+    private javax.swing.JLabel Win;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel suck;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
