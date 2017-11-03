@@ -32,11 +32,13 @@ public class UbbiDubbitrans {
         
         while(x < 1){
         
-         System.out.print("Please enter your word: ");
+         System.out.print("Please enter your word or sentence: ");
 
             Scanner words = new Scanner(System.in);
 
             String word = words.nextLine();
+            
+            // scanner to get the word 
             
             String ex = "EXIT";
             
@@ -47,6 +49,8 @@ public class UbbiDubbitrans {
                break;
                 
             }
+            
+            // easy way to exit the system 
             
             String translate = "";
             
@@ -63,6 +67,7 @@ public class UbbiDubbitrans {
                   
                   foundvowel = true; 
                   
+                  //find the first vowel 
                   
                 }else{
                     
@@ -73,13 +78,14 @@ public class UbbiDubbitrans {
                         foundvowel = false;
                     }
                 }
-            
+            // finds double vowels 
             
     }
+            // this for loop constructs the word 
             
             System.out.print(translate);
             x = x +1;
-            
+            // prints out the word 
         }
         
 }
