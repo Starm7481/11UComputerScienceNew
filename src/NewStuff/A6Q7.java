@@ -24,6 +24,8 @@ public class A6Q7 {
             nums[x] = i;
             x = x + 1;
         }
+        
+        int numstemp[] = nums;
 
         /*   for(int i=0; i <nums.length; i++){
          System.out.println(nums[i]);
@@ -32,20 +34,20 @@ public class A6Q7 {
 
 
 
-        for (int p = 1; p < nums.length; p++) {
-            for (int i = 2; i < nums.length; i++) {
-                if (nums[p] != 0) {
-                    nums[i*p] = 0;
+        for (int p = 2; p < nums.length; p++) {      // loops the first array the value of nums[0] is 2
+            for (int i = 2; i < nums.length; i++) {     // this is the multiplication loop, starts at 2x
+                if ((i * p)-2 < nums.length){ 
+                    // this checks that the number isn't out of bounds, then sets the multiples of nums[x] to 0
+                        nums[(i * p)-2] = 0;  
                 }
-            }
-            
+               
+            }               
         }
-        
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0){
+            if (nums[i] != 0) {
                 System.out.println(nums[i]);
             }
-            }
+        }
 
     }
 }
