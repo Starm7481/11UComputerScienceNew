@@ -12,6 +12,7 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -27,7 +28,7 @@ public class GameProject extends JComponent {
 
     // Height and Width of our game
     static final int WIDTH = 800;
-    static final int HEIGHT = 600;
+    static final int HEIGHT = 800;
     
     //Title of the window
     String title = "My Game";
@@ -65,7 +66,7 @@ public class GameProject extends JComponent {
     int playerXDirection =1;
     boolean player1Up = false;
     boolean player1Down = false;
-    Rectangle player1 = new Rectangle(WIDTH/2-playerSize/2, 495, playerSize,playerSize);
+    Rectangle player1 = new Rectangle(WIDTH/2-playerSize/2, 695, playerSize,playerSize);
     // cube controls 
     int cubeSize = 100;
     int cubeSpeed = 5;
@@ -77,7 +78,7 @@ public class GameProject extends JComponent {
     Rectangle cube4 = new Rectangle(500, 25, cubeSize, cubeSize);
     Rectangle cube5 = new Rectangle(650, 25, cubeSize, cubeSize);
             
-    Rectangle plat = new Rectangle(25,550,750,25);
+    Rectangle plat = new Rectangle(25,750,750,25);
     
     int randomX = 0;
     //score 
@@ -85,9 +86,16 @@ public class GameProject extends JComponent {
     //start menu 
     boolean start = false;
     boolean diffMenu = false;
+    boolean gStart = false;
+    //start menu animation
+    int pstartY = HEIGHT/2-97;
+    int startY = HEIGHT/2-100;
+    int ppressY = HEIGHT/2+3;
+    int pressY = HEIGHT/2;
+    Color purp = new Color(66,14,150);
     //cubestuff
     int blankCube =  (int)(Math.random()*(5 - 1 + 1))+ 1;
-    
+    Font biggerFont = new Font("arial", Font.BOLD, 20);
     
 
     // GAME VARIABLES END HERE   
@@ -131,14 +139,20 @@ public class GameProject extends JComponent {
 //        // GAME DRAWING GOES HERE
 //        // set colour to black
        // Start Menu
+          g.setFont(biggerFont);
           g.setColor(Color.BLACK);
 
           g.fillRect(0, 0, WIDTH, HEIGHT);
-
-          g.setColor(Color.WHITE);
+            g.setColor(purp);
+          g.drawString("VOID: A GAME OF SKILL", WIDTH/2-142, pstartY);
           
-          g.drawString("VOID: A GAME OF SKILL", WIDTH/2-35, HEIGHT/2 - 150);
-          g.drawString("Press X to Start", WIDTH/2-25, HEIGHT/2);
+           g.drawString("Press X to Start", WIDTH/2 - 103, ppressY);
+          
+          g.setColor(Color.WHITE);
+            
+          g.drawString("VOID: A GAME OF SKILL", WIDTH/2-140, startY);
+          
+          g.drawString("Press X to Start", WIDTH/2 - 100, pressY);
           
           // Difficulty Menu
           if(diffMenu == true){
@@ -147,13 +161,13 @@ public class GameProject extends JComponent {
               g.fillRect(0, 0, WIDTH, HEIGHT);
 
               g.setColor(Color.WHITE);
-              g.drawString("PICK YOUR DIFFICULTY", WIDTH/2-35, 100);
+              g.drawString("PICK YOUR DIFFICULTY", WIDTH/2-125, 200);
               
-              g.drawString("EASY || PRESS R", WIDTH/2-35, 200);
+              g.drawString("EASY || PRESS R", WIDTH/2-100, 400);
               
-              g.drawString("HARD || PRESS T", WIDTH/2-35, 300);
+              g.drawString("HARD || PRESS T", WIDTH/2-100, 500);
               
-              g.drawString("INSANE || PRESS Y", WIDTH/2-35, 400);
+              g.drawString("INSANE || PRESS Y", WIDTH/2-100, 600);
           }
           // Game Interface 
         if(start == true){
@@ -190,7 +204,7 @@ public class GameProject extends JComponent {
           }
       
           //draw score 
-          g.drawString(("" + score), WIDTH/2, 590);
+          g.drawString(("" + score), WIDTH/2, HEIGHT/2);
         // GAME DRAWING ENDS HERE
         }
     }
@@ -223,7 +237,28 @@ public class GameProject extends JComponent {
 
             // all your game rules and move is done in here
             // GAME LOGIC STARTS HERE 
-  
+       
+            
+                int inc = 1;
+                
+                if(pstartY <= HEIGHT/2 -50){
+             
+                pstartY = pstartY +inc;
+                startY = startY +inc;
+                ppressY = ppressY +inc;
+                pressY = pressY +inc;
+                    
+                }
+                
+                  if(pstartY >= HEIGHT/2+50){
+                pstartY = pstartY -inc;
+                startY = startY -inc;
+                ppressY = ppressY -inc;
+                pressY = pressY -inc;
+            
+                }
+            
+  if(gStart == true){
            cube.y = cube.y + 1*cubeSpeed;
             
            cube2.y = cube2.y+1*cubeSpeed;
@@ -335,7 +370,7 @@ public class GameProject extends JComponent {
                
             }
                       
-      
+  }
 //            
             //Boundaries
             if(player1.x >= 725){
@@ -351,7 +386,7 @@ public class GameProject extends JComponent {
               }else if(player1Down){
                   player1.x = player1.x - playerSpeed;
               }
-              
+        
               
              
 
@@ -414,28 +449,28 @@ public class GameProject extends JComponent {
             // determine which key it is
             if(key == KeyEvent.VK_D){
                 player1Up = true;
-              
+              gStart = true;
             }else if(key == KeyEvent.VK_A){
                 player1Down = true;
-             
+                gStart = true;
             }
             // player menu
            if(key == KeyEvent.VK_X){
                diffMenu = true;
            }
            if(key == KeyEvent.VK_R){
-               cubeSpeed = 4;
-               playerSpeed =10;
+               cubeSpeed = 10;
+               playerSpeed =11;
                start = true;
            }
            if(key == KeyEvent.VK_T){
-                  cubeSpeed = 10;
-               playerSpeed =10;
+                  cubeSpeed = 13;
+               playerSpeed =13;
                start = true;
            }
            if(key == KeyEvent.VK_Y){
-                  cubeSpeed = 12;
-               playerSpeed =12;
+                  cubeSpeed = 15;
+               playerSpeed =17;
                start = true;
            }
            
