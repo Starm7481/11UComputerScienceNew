@@ -1,0 +1,551 @@
+package gameproject;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+import java.awt.Dimension;
+import java.awt.Graphics;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Rectangle;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+
+/**
+ *
+ * @author lamon
+ */
+public class GameProject extends JComponent {
+
+    // Height and Width of our game
+    static final int WIDTH = 800;
+    static final int HEIGHT = 800;
+    
+    //Title of the window
+    String title = "My Game";
+
+    // sets the framerate and delay for our game
+    // you just need to select an approproate framerate
+    long desiredFPS = 60;
+    long desiredTime = (1000) / desiredFPS;
+
+
+    // YOUR GAME VARIABLES WOULD GO HERE
+    
+//    int paddleHeight = 100;
+//    int paddleWidth = 25;
+    
+    
+//    Rectangle player1 = new Rectangle(50, HEIGHT/2 - paddleHeight/2, 
+//                                        paddleWidth, paddleHeight);
+//    Rectangle player2 = new Rectangle(WIDTH - 50 - paddleWidth, HEIGHT/2 - paddleHeight/2, 
+//                                        paddleWidth, paddleHeight);
+//    int paddleSpeed = 5;
+//    
+//    boolean player1Up = false;
+//    boolean player1Down = false;
+//    
+//    
+//    int ballSize = 30;
+//    Rectangle ball = new Rectangle(WIDTH/2 - ballSize/2, HEIGHT/2 - ballSize/2, ballSize, ballSize);
+//    int ballXDirection = 1;
+//    int ballYDirection = -1;
+//    int ballSpeed = 2;
+    // player controls 
+    int playerSize = 50;
+    int playerSpeed = 8;
+    int playerXDirection =1;
+    boolean player1Up = false;
+    boolean player1Down = false;
+    Rectangle player1 = new Rectangle(WIDTH/2-playerSize/2, 695, playerSize,playerSize);
+    // cube controls 
+    int cubeSize = 100;
+    int cubeSpeed = 5;
+    boolean cubeHit = false;
+    
+    Rectangle cube = new Rectangle(25, 25 , cubeSize,cubeSize);
+    Rectangle cube2 = new Rectangle(200, 25, cubeSize, cubeSize); 
+    Rectangle cube3 = new Rectangle(350, 25, cubeSize, cubeSize);
+    Rectangle cube4 = new Rectangle(500, 25, cubeSize, cubeSize);
+    Rectangle cube5 = new Rectangle(650, 25, cubeSize, cubeSize);
+            
+    Rectangle plat = new Rectangle(25,750,750,25);
+    
+    int randomX = 0;
+    //score 
+    int score = 0;
+    boolean goingDown = true;
+    //start menu 
+    boolean start = false;
+    boolean diffMenu = false;
+    boolean gStart = false;
+    //start menu animation
+    int pstartY = HEIGHT/2-97;
+    int startY = HEIGHT/2-100;
+    int ppressY = HEIGHT/2+3;
+    int pressY = HEIGHT/2;
+    Color purp = new Color(66,14,150);
+    Color purpl = new Color(38,2,54);
+    //cubestuff
+    int blankCube =  (int)(Math.random()*(5 - 1 + 1))+ 1;
+    Font biggerFont = new Font("arial", Font.BOLD, 20);
+    Font BigggerFont = new Font("arial", Font.BOLD, 45);
+    
+
+    // GAME VARIABLES END HERE   
+
+    
+    // Constructor to create the Frame and place the panel in
+    // You will learn more about this in Grade 12 :)
+    public GameProject(){
+        // creates a windows to show my game
+        JFrame frame = new JFrame(title);
+
+        // sets the size of my game
+        this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        // adds the game to the window
+        frame.add(this);
+
+        // sets some options and size of the window automatically
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        // shows the window to the user
+        frame.setVisible(true);
+        
+        // add listeners for keyboard and mouse
+        frame.addKeyListener(new Keyboard());
+        Mouse m = new Mouse();
+        
+        this.addMouseMotionListener(m);
+        this.addMouseWheelListener(m);
+        this.addMouseListener(m);
+    }
+    
+    // drawing of the game happens in here
+    // we use the Graphics object, g, to perform the drawing
+    // NOTE: This is already double buffered!(helps with framerate/speed)
+    @Override
+    public void paintComponent(Graphics g) {
+        // always clear the screen first!
+//        g.clearRect(0, 0, WIDTH, HEIGHT);
+//
+//        // GAME DRAWING GOES HERE
+//        // set colour to black
+       // Start Menu
+          g.setFont(biggerFont);
+          g.setColor(Color.BLACK);
+
+          g.fillRect(0, 0, WIDTH, HEIGHT);
+            g.setColor(purp);
+          g.drawString("VOID: A GAME OF SKILL", WIDTH/2-142, pstartY);
+          
+           g.drawString("Press X to Start", WIDTH/2 - 103, ppressY);
+          
+          g.setColor(Color.WHITE);
+            
+          g.drawString("VOID: A GAME OF SKILL", WIDTH/2-140, startY);
+          
+          g.drawString("Press X to Start", WIDTH/2 - 100, pressY);
+          
+          // Difficulty Menu
+          if(diffMenu == true){
+              
+              g.setColor(Color.BLACK);
+              
+              g.fillRect(0, 0, WIDTH, HEIGHT);
+              
+             g.setColor(purp);
+              
+             g.drawString("PICK YOUR DIFFICULTY", WIDTH/2-128, 203);
+              
+              g.drawString("EASY || PRESS R", WIDTH/2-103, 403);
+              
+              g.drawString("HARD || PRESS T", WIDTH/2-103, 503);
+              
+              g.drawString("INSANE || PRESS Y", WIDTH/2-103, 603);
+              
+                g.setColor(Color.BLACK);
+
+              
+
+              g.setColor(Color.WHITE);
+              g.drawString("PICK YOUR DIFFICULTY", WIDTH/2-125, 200);
+              
+              g.drawString("EASY || PRESS R", WIDTH/2-100, 400);
+              
+              g.drawString("HARD || PRESS T", WIDTH/2-100, 500);
+              
+              g.drawString("INSANE || PRESS Y", WIDTH/2-100, 600);
+              
+       
+              
+          }
+          // Game Interface 
+        if(start == true){
+          g.setColor(purpl);
+//        // draw black play surface
+          g.fillRect(0, 0, WIDTH, HEIGHT);
+//        
+//        // switch to white
+          g.setColor(Color.WHITE);
+          
+//       // draw platform 
+          g.fillRect(plat.x,plat.y,plat.width,plat.height);
+          // draw the players
+          g.fillRect(player1.x, player1.y, player1.width, player1.height);
+          
+          //draw the cube 
+          if(cubeHit == false){
+              if(blankCube != 1){
+          g.fillRect(cube.x ,cube.y, cube.width, cube.height);
+              }
+              
+              if(blankCube != 2){
+          g.fillRect(cube2.x, cube2.y,cube2.width,cube2.height);
+              }
+              if(blankCube != 3){
+          g.fillRect(cube3.x, cube3.y,cube3.width,cube3.height);
+              }
+            if(blankCube != 4){
+          g.fillRect(cube4.x, cube4.y,cube4.width,cube4.height);
+            }
+            if(blankCube != 5){
+          g.fillRect(cube5.x, cube5.y,cube5.width,cube5.height);              
+            }
+          }
+      g.setFont(BigggerFont);
+          //draw score 
+          g.drawString(("" + score), WIDTH/2, HEIGHT/2);
+        // GAME DRAWING ENDS HERE
+        }
+    }
+
+
+    // This method is used to do any pre-setup you might need to do
+    // This is run before the game loop begins!
+    public void  preSetup(){
+       // Ay of your pre setup before the loop starts should go here
+
+       
+    }
+
+    // The main game loop
+    // In here is where all the logic for my game will go
+    public void run() {
+        // Used to keep track of time used to draw and update the game
+        // This is used to limit the framerate later on
+        long startTime;
+        long deltaTime;
+
+        preSetup();
+
+        // the main game loop section
+        // game will end if you set done = false;
+        boolean done = false;
+        while (!done) {
+            // determines when we started so we can keep a framerate
+            startTime = System.currentTimeMillis();
+
+            // all your game rules and move is done in here
+            // GAME LOGIC STARTS HERE 
+    
+                int inc = 1;
+                    if (goingDown == true){
+  
+                if (pstartY <= 300){
+                goingDown = false;
+                 pstartY = pstartY +inc;
+                startY = startY +inc;
+                ppressY = ppressY +inc;
+                pressY = pressY +inc;
+                 }
+                 else {
+                pstartY = pstartY -inc;
+                startY = startY -inc;
+                ppressY = ppressY -inc;
+                pressY = pressY -inc; 
+                }
+                }
+                else {
+
+                if (pstartY >= 350){
+                  goingDown = true;
+               pstartY = pstartY -inc;
+                startY = startY -inc;
+                ppressY = ppressY -inc;
+                pressY = pressY -inc;
+                 }
+                else {
+                 pstartY = pstartY +inc;
+                startY = startY +inc;
+                ppressY = ppressY +inc;
+                pressY = pressY +inc;
+    }
+}
+
+                  
+            
+            
+  if(gStart == true){
+           cube.y = cube.y + 1*cubeSpeed;
+            
+           cube2.y = cube2.y+1*cubeSpeed;
+            
+            cube3.y = cube3.y+1*cubeSpeed;
+            
+            cube4.y = cube4.y+1*cubeSpeed;
+            
+            cube5.y = cube5.y+1*cubeSpeed;
+//            // cube collision
+        if(blankCube != 1){
+            if(cube.intersects(player1)){
+                cubeHit = true;
+                score = -1;
+ gStart = false;
+   
+            }
+        }
+           if(blankCube != 2){
+             if(cube2.intersects(player1)){
+                cubeHit = true;
+                score = -1;
+ gStart = false;
+            }
+           }
+              if(blankCube != 3){
+              if(cube3.intersects(player1)){
+                cubeHit = true;
+                score = -1;
+                 gStart = false;
+            }
+              }
+              
+                 if(blankCube != 4){
+               if(cube4.intersects(player1)){
+                cubeHit = true;
+                score = -1;
+                 gStart = false;
+
+            }
+                 }
+                 
+                    if(blankCube != 5){
+                if(cube5.intersects(player1)){
+                cubeHit = true;
+                score = -1;
+ gStart = false;
+            }
+                    }
+             if(cube.intersects(plat)){
+                cubeHit = true;  
+                score = score +1;
+          blankCube = (int)(Math.random()*(5 - 1 + 1))+ 1;;
+                cube.y = 25;   
+              cube2.y = 25;
+                cube3.y = 25;
+                cube4.y = 25;
+                cube5.y = 25;
+                cubeHit = false;
+               
+            }
+                  if(cube2.intersects(plat)){
+                cubeHit = true;  
+                score = score +1;
+                blankCube = (int)(Math.random()*(5 - 1 + 1))+ 1;
+                cube.y = 25;   
+              cube2.y = 25;
+                cube3.y = 25;
+                cube4.y = 25;
+                cube5.y = 25;
+                cubeHit = false;
+               
+            }
+                    if(cube3.intersects(plat)){
+                cubeHit = true;  
+                score = score +1;
+            blankCube = (int)(Math.random()*(5 - 1 + 1))+ 1;
+                cube.y = 25;   
+              cube2.y = 25;
+                cube3.y = 25;
+                cube4.y = 25;
+                cube5.y = 25;
+                cubeHit = false;
+                
+               
+            }
+                      if(cube4.intersects(plat)){
+                cubeHit = true;  
+                score = score +1;
+            blankCube = (int)(Math.random()*(5 - 1 + 1))+ 1;
+                cube.y = 25; 
+                cube2.y = 25;
+                cube3.y = 25;
+                cube4.y = 25;
+                cube5.y = 25;
+             
+                cubeHit = false;
+               
+            }
+                      
+                        if(cube5.intersects(plat)){
+                cubeHit = true;  
+                score = score +1;
+           blankCube = (int)(Math.random()*(5 - 1 + 1))+ 1;
+                cube.y = 25;   
+              cube2.y = 25;
+                cube3.y = 25;
+                cube4.y = 25;
+                cube5.y = 25;
+                cubeHit = false;
+               
+            }
+                      
+  }
+//            
+            //Boundaries
+            if(player1.x >= 725){
+                player1Up = false;
+            }
+            
+            if(player1.x <= 25){
+                player1Down = false;
+            }
+            // left and right movements 
+              if(player1Up){
+                  player1.x = player1.x + playerSpeed;
+              }else if(player1Down){
+                  player1.x = player1.x - playerSpeed;
+              }
+        
+              
+             
+
+            // GAME LOGIC ENDS HERE 
+            // update the drawing (calls paintComponent)
+            repaint();
+
+            // SLOWS DOWN THE GAME BASED ON THE FRAMERATE ABOVE
+            // USING SOME SIMPLE MATH
+            deltaTime = System.currentTimeMillis() - startTime;
+            try {
+                if (deltaTime > desiredTime) {
+                    //took too much time, don't wait
+                    Thread.sleep(1);
+                } else {
+                    // sleep to make up the extra time
+                    Thread.sleep(desiredTime - deltaTime);
+                }
+            } catch (Exception e) {
+            }
+        }
+    }
+
+    
+
+    // Used to implement any of the Mouse Actions
+    private class Mouse extends MouseAdapter {
+        // if a mouse button has been pressed down
+        @Override
+        public void mousePressed(MouseEvent e){
+            
+        }
+        
+        // if a mouse button has been released
+        @Override
+        public void mouseReleased(MouseEvent e){
+            
+        }
+        
+        // if the scroll wheel has been moved
+        @Override
+        public void mouseWheelMoved(MouseWheelEvent e){
+            
+        }
+
+        // if the mouse has moved positions
+        @Override
+        public void mouseMoved(MouseEvent e){
+            
+        }
+    }
+    
+    // Used to implements any of the Keyboard Actions
+    private class Keyboard extends KeyAdapter{
+        // if a key has been pressed down
+        @Override
+        public void keyPressed(KeyEvent e){
+//            // store the key being pressed
+            int key = e.getKeyCode();
+            // determine which key it is
+            if(key == KeyEvent.VK_D){
+                player1Up = true;
+              gStart = true;
+            }else if(key == KeyEvent.VK_A){
+                player1Down = true;
+                gStart = true;
+            }
+            // player menu
+           if(key == KeyEvent.VK_X){
+               diffMenu = true;
+           }
+           if(key == KeyEvent.VK_R){
+               cubeSpeed = 10;
+               playerSpeed =11;
+               start = true;
+           }
+           if(key == KeyEvent.VK_T){
+                  cubeSpeed = 13;
+               playerSpeed =13;
+               start = true;
+           }
+           if(key == KeyEvent.VK_Y){
+                  cubeSpeed = 15;
+               playerSpeed =17;
+               start = true;
+           }
+           if(key == KeyEvent.VK_Q){
+            start = false;
+            diffMenu = true;
+            
+           }
+           
+           
+        }
+        
+        // if a key has been released
+        @Override
+        public void keyReleased(KeyEvent e){
+            // store the key being pressed
+                int key = e.getKeyCode();
+            // determine which key it is
+            if(key == KeyEvent.VK_D){
+                player1Up = false;
+             
+            }else if(key == KeyEvent.VK_A){
+                player1Down = false;
+             
+            }
+    }
+    }
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // creates an instance of my game
+        GameProject game = new GameProject();
+                
+        // starts the game loop
+        game.run();
+    }
+}
